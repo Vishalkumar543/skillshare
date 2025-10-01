@@ -9,7 +9,8 @@ import jwt from "jsonwebtoken"
 
 
 const createToken = (userid) => {
-    return jwt.sign({userid},process.env.JWT_SECRET,{ expiresIn: "1h" })
+    
+    return jwt.sign({userid},process.env.JWT_SECRET,{ expiresIn: "1d" })
 }
 
 
@@ -76,7 +77,7 @@ const login = asyncHandler(async(req,res)=>{
         throw new ApiError(400,"user doesn't exist")
     }
 
-    const isPasswordCorrect = existingUser.comparePassword(password,user.password)
+    const isPasswordCorrect = user.comparePassword(password,user.password)
 
     if (!isPasswordCorrect) {
         throw new ApiError(400, "Inavlid email or password")
@@ -113,7 +114,7 @@ const verifyUser = asyncHandler(async(req,res)=>{
     user.otpExpiry = undefined
 
 
-    await User.save({validateBeforeSave:false})
+    await user.save({validateBeforeSave:false})
 
 
     return res.status(200).json(

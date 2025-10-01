@@ -6,6 +6,7 @@ import SignupPage from "./pages/Signup"
 import {Routes,Route} from "react-router-dom"
 import PrivateRoute from "./components/PrivateRoute"
 import  Home  from "./pages/Home"
+import VerifyOtp from "./pages/VerifyOtp";
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
         <Route path="*" element={<LoginPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
-
+        <Route path="/verify" element={<VerifyOtp/>}/>
         {/* private routes */}
 
         <Route path="/"

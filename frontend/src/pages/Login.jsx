@@ -25,7 +25,7 @@ export default function LoginPage() {
         email:formData.email,
         password: formData.password
       })
-      console.log(res.data.data); 
+      // console.log(res.data.data); 
 
       // set token in localstorage
       localStorage.setItem("token",res.data.data.token)
@@ -38,7 +38,8 @@ export default function LoginPage() {
       if (error.response) {
         // Server ne response bheja with status code
         console.error("Error:", error.response.data.message);
-        alert(error.response.data.message);
+        // alert(error.response.data.message);
+        toast.error(error.response.data.message)
       } else if (error.request) {
         // Request gaya but response nahi aaya
         console.error("No response received:", error);

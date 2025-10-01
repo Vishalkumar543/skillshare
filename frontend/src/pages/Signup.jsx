@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../api/api";
 import {useNavigate} from "react-router-dom"
+import {toast} from "react-toastify"
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -33,10 +34,12 @@ export default function SignupPage() {
       const response = await API.post("/user/register", data);
       console.log(response.data);
       setFormData({ name: "", email: "", password: "", avatar: null });
-      alert(response.data.message)
+      // alert(response.data.message)
+      toast.success(response.data.message)
+      localStorage.setItem("token",response.data.data.token)
 
       if (response.data.success==true) {
-        navigate("/login")
+        navigate("/verify")
       }
 
 
