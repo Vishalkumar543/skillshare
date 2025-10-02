@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate , Link} from "react-router-dom"
 import API from "../api/api";
 import {toast} from "react-toastify"
 
@@ -52,15 +52,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+    <>
+    <div className="min-h-screen bg-lightgrey">
+    <h1 className="text-center text-6xl py-2 font-poppins font-bold ">SK<span className="text-myblue" >i</span>LL SHARE<span className="text-myblue">.</span></h1> 
+    <div className=" flex items-center justify-center h-[calc(100vh-8rem)] p-4 font-poppins ">
+      <div className="w-full max-w-md bg-white rounded-sm p-6">
+        <h2 className="text-2xl font-bold text-center text-myblue -800 mb-6">
           Login
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-gray-600 mb-1">Email</label>
             <input
               type="email"
               name="email"
@@ -69,13 +71,12 @@ export default function LoginPage() {
               onChange={handleChange}
               placeholder="Enter your email"
               required
-              className="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-myblue border-1 rounded-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-gray-600 mb-1">Password</label>
             <input
               type="password"
               name="password"
@@ -84,30 +85,32 @@ export default function LoginPage() {
               onChange={handleChange}
               placeholder="Enter your password"
               required
-              className="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-myblue border-1 rounded-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <a href="/signup" className="text-blue-600 hover:underline text-right block">
+            <Link to="/login" className="text-blue-600 hover:underline text-right block">
             forget password
-            </a>
+            </Link>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-xl hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 cursor-pointer text-white font-semibold py-2 rounded-sm hover:bg-blue-700 transition"
           >
             Login
           </button>
         </form>
 
         {/* Extra Links */}
-        <p className="text-center text-sm text-gray-600 mt-4">
+        <p className="text-center text-gray-600 mt-4 text-md">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-600 hover:underline">
+          <Link to="/signup" className="text-blue-600 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
+</div>
     </div>
+    </>
   );
 }

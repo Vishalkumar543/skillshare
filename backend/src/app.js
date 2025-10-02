@@ -19,11 +19,13 @@ app.use(cors(corsOptions))
 
 // import routes
 import userRoutes from "./routes/user.routes.js"
+import userextraRoutes from "./routes/userextra.routes.js"
 
 
 
 //use routes
 app.use("/api/v1/user",userRoutes)
+app.use("/api/v1/user",userextraRoutes)
 
 
 app.use(errorHandler)

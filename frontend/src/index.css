@@ -9,6 +9,8 @@
 
 @theme{
     --font-outfit:"Outfit", sans-serif;
-    --color-orange: #FD6E0B;
+    --font-poppins:"Poppins", sans-serif;
+    --color-myblue: #0046FF;
     --color-lightgrey:#FDF8F8;
+    --color-mywhite:#F5F1DC;
 }
