@@ -1,4 +1,5 @@
 import { User } from "../models/auth.models.js";
+import bcrypt from "bcryptjs";
 import {asyncHandler} from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -77,11 +78,12 @@ const login = asyncHandler(async(req,res)=>{
         throw new ApiError(400,"user doesn't exist")
     }
 
-    const isPasswordCorrect = user.comparePassword(password,user.password)
+    const isPasswordCorrect = await user.comparePassword(password)
 
     if (!isPasswordCorrect) {
         throw new ApiError(400, "Inavlid email or password")
     }
+
 
      const token = createToken(user._id)
 

@@ -27,12 +27,17 @@ export default function LoginPage() {
       })
       // console.log(res.data.data); 
 
+      
+
+      if(localStorage.getItem("token")){
+        toast.success("user already logged In ! Please logout first");
+      }else{
+        toast.success(res.data.message);
+        navigate("/home") 
+      }
+
       // set token in localstorage
       localStorage.setItem("token",res.data.data.token)
-
-      toast.success(res.data.message);
-
-      navigate("/home") 
 
     } catch (error) {
       if (error.response) {
