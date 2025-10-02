@@ -5,7 +5,6 @@ import {User} from "../models/auth.models.js"
 
 const protect = asyncHandler(async (req,_,next) =>{
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-    console.log("token:" ,token);
     
     if (!token) {
         throw new ApiError(401,"You are not logged in. Please login to access")
