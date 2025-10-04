@@ -7,6 +7,7 @@ import {Routes,Route} from "react-router-dom"
 import PrivateRoute from "./components/PrivateRoute"
 import  Home  from "./pages/Home"
 import VerifyOtp from "./pages/VerifyOtp";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/verify" element={<VerifyOtp/>}/>
+        <Route path="/profile" element={<ProfilePage/>}/>
         {/* private routes */}
 
         <Route path="/"
@@ -44,7 +46,7 @@ function App() {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

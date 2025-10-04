@@ -15,7 +15,7 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
             <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              Home
+              <Link to="/">Home</Link>
             </button>
             <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
               About us
@@ -24,7 +24,8 @@ export default function Navbar() {
               Explore skills
             </button>
             <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              myProfile
+              
+              <Link to="/profile">myProfile</Link>
             </button>
             <button className="px-4 py-1 text-xl text-grey-200 rounded-xl bg-myblue text-white transition cursor-pointer">
               <Link to="/login">Sign/Login</Link>
@@ -48,7 +49,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white shadow-lg">
           <div className="flex flex-col px-4 pt-2 pb-4 space-y-2">
             <button className="px-4 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              Home
+            <Link to="/">Home</Link>
             </button>
             <button className="px-4 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
               About us
@@ -57,10 +58,10 @@ export default function Navbar() {
               Explore skills
             </button>
             <button className="px-4 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              myProfile
+            <Link to="/profile">myProfile</Link>
             </button>
             <button className="px-4 py-1 text-xl text-grey-200 rounded-xl bg-myblue text-white transition cursor-pointer">
-              Sign/Login
+            <Link to="/login">Sign/Login</Link>
             </button>
           </div>
         </div>

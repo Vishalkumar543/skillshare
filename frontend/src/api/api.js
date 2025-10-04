@@ -5,7 +5,7 @@ const API = axios.create({
     withCredentials:true
 })
 
-
+// Interceptor for request
 API.interceptors.request.use((config)=>{
     const token = localStorage.getItem("token")
     if (token) {
@@ -14,6 +14,19 @@ API.interceptors.request.use((config)=>{
 
   return config;
 })
+
+// Interceptor for response
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Token expired or invalid
+      localStorage.removeItem("token");
+      window.location.href = "/login"; // redirect
+    }
+    return Promise.reject(error);
+  }
+);
 
 
 export default API;

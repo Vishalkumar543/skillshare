@@ -31,6 +31,7 @@ export default function LoginPage() {
 
       if(localStorage.getItem("token")){
         toast.success("user already logged In ! Please logout first");
+        navigate("/home") 
       }else{
         toast.success(res.data.message);
         navigate("/home") 
