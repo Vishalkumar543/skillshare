@@ -8,6 +8,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import  Home  from "./pages/Home"
 import VerifyOtp from "./pages/VerifyOtp";
 import ProfilePage from "./pages/ProfilePage";
+import ExploreSkills from "./pages/ExploreSkills";
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/verify" element={<VerifyOtp/>}/>
-        <Route path="/profile" element={<ProfilePage/>}/>
+        
         {/* private routes */}
 
         <Route path="/"
@@ -40,6 +41,23 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route path="/exploreSkills"
+        
+          element={
+            <PrivateRoute>
+              <ExploreSkills/>
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/profile"
+         element={
+           <PrivateRoute>
+          <ProfilePage/>
+         </PrivateRoute>
+        }
+         />
 
 
       

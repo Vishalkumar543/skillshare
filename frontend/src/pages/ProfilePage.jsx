@@ -11,7 +11,7 @@ export default function ProfilePage() {
       try {
         const res = await API.get("/user/me"); 
         setUser(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
         
         
       } catch (err) {
@@ -49,20 +49,24 @@ export default function ProfilePage() {
 
   return (
     <>
+    <div className="min-h-screen">
     <Navbar/>
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
-      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-6">
+    <div className=" flex justify-center items-center p-4 font-outfit">
+      <div className="bg-white shadow-md rounded-2xl w-full max-w-lg p-6">
         {/* Profile Header */}
-        <div className="flex flex-col items-center">
+        <div className="flex  md:flex-row justify-around ">
           <img
             src={user.avatar || "https://via.placeholder.com/100"}
             alt="profile"
-            className="w-24 h-24 rounded-full border-4 border-indigo-500"
+            className="w-26 h-26 rounded-full border-4 border-indigo-500"
           />
+          <div>
           <h2 className="mt-4 text-2xl font-semibold text-gray-800">
             {user.name}
           </h2>
-          <p className="text-gray-500">{user.email}</p>
+          <p className="text-gray-500 text-lg">{user.email}</p>
+          <p className="text-gray-500 text-lg">B.tech CSE</p>
+          </div>
         </div>
 
         {/* Profile Info */}
@@ -73,7 +77,7 @@ export default function ProfilePage() {
           </p>
           <p>
             <span className="font-semibold">Profile Status:</span>{" "}
-            {user.isComplete ? "Complete ✅" : "Incomplete ❌"}
+            {user.isProfileComplete ? "Complete ✅" : "Incomplete ❌"}
           </p>
         </div>
 
@@ -87,7 +91,7 @@ export default function ProfilePage() {
 
           <button
             onClick={() => navigate("/edit-profile")}
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-full cursor-pointer  hover:bg-blue-600 transition"
           >
             Edit Profile
           </button>
@@ -95,7 +99,7 @@ export default function ProfilePage() {
           {!user.isComplete && (
             <button
               onClick={() => navigate("/complete-profile")}
-              className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition"
+              className="w-full bg-green-500 text-white py-2 px-4 rounded-full cursor-pointer hover:bg-green-600 transition"
             >
               Complete Profile
             </button>
@@ -103,12 +107,13 @@ export default function ProfilePage() {
 
           <button
             onClick={handleLogout}
-            className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
+            className="w-full bg-red-500 text-white py-2 px-4 rounded-full cursor-pointer hover:bg-red-600 transition"
           >
             Logout
           </button>
         </div>
       </div>
+    </div>
     </div>
     </>
   );

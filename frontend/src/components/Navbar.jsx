@@ -14,21 +14,21 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
-            <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              <Link to="/">Home</Link>
+            <button >
+              <Link  to="/" className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">Home</Link>
             </button>
             <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
               About us
             </button>
-            <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
-              Explore skills
+            <button >
+              <Link to="/exploreSkills" className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer" >Explore skills</Link>
             </button>
-            <button className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">
+            <button >
               
-              <Link to="/profile">myProfile</Link>
+              <Link to="/profile" className="px-2 py-1 text-xl text-grey-200 rounded-2xl hover:bg-myblue hover:text-white transition cursor-pointer">myProfile</Link>
             </button>
-            <button className="px-4 py-1 text-xl text-grey-200 rounded-xl bg-myblue text-white transition cursor-pointer">
-              <Link to="/login">Sign/Login</Link>
+            <button >
+              <Link to="/login" className="px-4 py-1 text-xl text-grey-200 rounded-xl bg-myblue text-white transition cursor-pointer" >Sign/Login</Link>
             </button>
           </div>
 

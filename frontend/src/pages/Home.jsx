@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
       <Navbar />
       <div className="header">
-        <div className="container w-4/5 mx-auto py-6 flex md:flex-row flex-col justify-between items-center ">
+        <div className="container w-4/5 mx-auto py-6 flex md:flex-row flex-col justify-between items-center">
           <div className="left_section">
             <div className="content py-4 text-center md:text-left">
               <h1 className="md:text-8xl text-5xl font-poppins font-bold py-2">
@@ -17,8 +18,8 @@ const Home = () => {
               <p className="font-outfit md:text-2xl text-md my-1">
                 “Connecting students through skills.”
               </p>
-              <button className="mt-4 cursor-pointer text-2xl font-outfit border-2 border-myblue py-2 px-8 rounded-full hover:bg-myblue hover:text-white transition text-myblue">
-                Explore Skills <i class="ri-arrow-right-line"></i>
+              <button className="my-6">
+                <Link to="/exploreSkills"  className="mt-4 cursor-pointer text-2xl font-outfit border-2 border-myblue py-2 px-8 rounded-full hover:bg-myblue hover:text-white transition text-myblue" >Explore skills <i class="ri-arrow-right-line"></i></Link>
               </button>
             </div>
           </div>

@@ -14,6 +14,7 @@ const createToken = (userid) => {
     return jwt.sign({userid},process.env.JWT_SECRET,{ expiresIn: "1d" })
 }
 
+//register
 
 const register = asyncHandler(async (req,res)=>{
 
@@ -126,8 +127,69 @@ const verifyUser = asyncHandler(async(req,res)=>{
 })
 
 
+//forgot password
+
+const forgotPassword = asyncHandler(async (req,res) =>{
+    const {email} = req.body
+
+    const user = await User.findOne({email})
+
+    if(!user){
+        throw new ApiError(400,"user not found");
+    }
+
+    const otp = generateOtp();
+
+    user.otp = otp;
+    user.otpExpiry = Date.now() + 10 * 60 * 1000;
+
+    await sendEmail({
+        email:user.email,
+        subject:"OTP for forgot password",
+        html:`<h1>Your otp is ${otp} </h1>`
+    })
+
+    return res.status(200).json(
+        new ApiResponse(200,"successfully hit forgot password")
+    )
+
+})
+
+
+const resetPassword = asyncHandler(async(req,res)=>{
+    const {email,otp,password} = req.body
+
+    const user = await User.findOne({
+        email,
+        otp,
+        otpExpiry:{$gt: Date.now()},
+    })
+
+    if(!user){
+        throw new ApiError(400,"Invalid or expired OTP");
+        
+    }
+
+    user.password = password
+    user.otp =undefined
+    user.otpExpiry = undefined
+    await user.save({validateBeforeSave:false})
+
+
+    return res.status(200).json(
+        new ApiResponse(200,"password reset successfully")
+    )
+
+})
 
 
 
 
-export {register,login,verifyUser}
+
+
+export {register,
+        login,
+        verifyUser,
+        forgotPassword,
+        resetPassword
+    }
