@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
     default: false
   },
   otp: {
-    type: String,
+    type: Number,
     default: null,
   },
   otpExpiry: {
@@ -45,13 +45,16 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  skillsTeach:[String],
-  skillsLearn:[String],
+  skillsTeach:[],
+  skillsLearn:[],
   department:{
     type:String
   },
+  course:{
+    type:String
+  },
   year:{
-    type:Number
+    type:String
   },
   rating:{
     type:Number,

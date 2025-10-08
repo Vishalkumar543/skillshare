@@ -104,7 +104,7 @@ const verifyUser = asyncHandler(async(req,res)=>{
 
     const user = req.user
 
-    if (user.otp !== otp) {
+    if (user.otp != otp) {
         throw new ApiError(400,"Invalid OTP");
     }
 
@@ -132,6 +132,10 @@ const verifyUser = asyncHandler(async(req,res)=>{
 const forgotPassword = asyncHandler(async (req,res) =>{
     const {email} = req.body
 
+    if(!email){
+        throw new ApiError(400,"please provide email")
+    }
+
     const user = await User.findOne({email})
 
     if(!user){
@@ -142,6 +146,8 @@ const forgotPassword = asyncHandler(async (req,res) =>{
 
     user.otp = otp;
     user.otpExpiry = Date.now() + 10 * 60 * 1000;
+
+    user.save({validateBeforeSave:false})
 
     await sendEmail({
         email:user.email,
@@ -158,6 +164,8 @@ const forgotPassword = asyncHandler(async (req,res) =>{
 
 const resetPassword = asyncHandler(async(req,res)=>{
     const {email,otp,password} = req.body
+    // console.log(email,otp,password);
+    
 
     const user = await User.findOne({
         email,

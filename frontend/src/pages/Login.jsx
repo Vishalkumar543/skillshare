@@ -93,7 +93,7 @@ export default function LoginPage() {
               required
               className="w-full border-myblue border-1 rounded-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <Link to="/login" className="text-blue-600 hover:underline text-right block">
+            <Link to="/forgot-password" className="text-blue-600 hover:underline text-right block">
             forget password
             </Link>
           </div>

@@ -13,14 +13,14 @@ export const uploadImage = async (filePath) => {
       resource_type: 'auto',
     });
 
-    fs.unlink(filePath)
+    fs.unlinkSync(filePath)
 
     return {
       url: result.secure_url,
       id: result.public_id,
     };
   } catch (error) {
-    fs.unlink(filePath)
+    fs.unlinkSync(filePath)
     throw new Error(error.message);
   }
 };

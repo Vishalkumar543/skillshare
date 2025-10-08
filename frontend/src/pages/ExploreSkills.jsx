@@ -62,7 +62,7 @@ const ExploreSkills = () => {
           {users.map((user) => (
             <div
               key={user._id}
-              className="bg-white rounded-xl shadow-md p-5 flex flex-col md:flex-row justify-around items-center  hover:shadow-lg transition"
+              className="bg-white rounded-xl shadow-md p-5 gap-4 flex flex-col md:flex-row justify-around items-center  hover:shadow-lg transition"
             >
               <img
                 src={user.avatar || "https://via.placeholder.com/100"}
@@ -70,11 +70,11 @@ const ExploreSkills = () => {
                 className="w-30 h-30 rounded-full object-cover mb-4"
               />
               <div>
-              <h2 className="text-lg font-semibold">{user.name}</h2>
+              <h2 className="text-xl font-semibold">{user.name}</h2>
               <p className="text-sm text-gray-600">{user.email}</p>
-              <p className="mt-2 text-sm text-gray-700">
+              <p className="mt-2 text-md text-gray-700">
                 <strong>Skills:</strong>{" "}
-                {user.skills && user.skills.length > 0 ? user.skills.join(", ") : "No skills added"}
+                {user.skillsTeach && user.skillsTeach.length > 0 ? user.skillsTeach.join(", ") : "No skills added"}
               </p>
               <button
                 

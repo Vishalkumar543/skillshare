@@ -1,19 +1,28 @@
 import mongoose from "mongoose";
 
 const SessionSchema = new mongoose.Schema({
-  teacherId: {
+  teacher: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  learnerId: {
+  student: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
   skill: { 
     type: String, 
-    required: true },
+    required: true 
+  },
+  date:{
+    type:Date,
+    required:true
+  },
+  place:{
+    type:String,
+    required:true
+  },
   status: {
     type: String,
     enum: ["pending", "accepted", "rejected", "completed"],

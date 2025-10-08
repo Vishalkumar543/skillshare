@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import API from "../api/api";
+import { Link,useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate()
 
   // Profile fetch karna
   useEffect(() => {
@@ -11,7 +14,7 @@ export default function ProfilePage() {
       try {
         const res = await API.get("/user/me"); 
         setUser(res.data.data);
-        // console.log(res.data.data);
+        console.log(res.data.data);
         
         
       } catch (err) {
@@ -36,7 +39,7 @@ export default function ProfilePage() {
 
   const handleLogout =()=>{
     localStorage.removeItem("token")
-    window.location.href = "/login";
+    navigate('/login')
   }
 
 
@@ -58,14 +61,14 @@ export default function ProfilePage() {
           <img
             src={user.avatar || "https://via.placeholder.com/100"}
             alt="profile"
-            className="w-26 h-26 rounded-full border-4 border-indigo-500"
+            className="w-26 h-26 object-cover object-[15%_15%] rounded-full border-4 border-indigo-500"
           />
           <div>
           <h2 className="mt-4 text-2xl font-semibold text-gray-800">
             {user.name}
           </h2>
           <p className="text-gray-500 text-lg">{user.email}</p>
-          <p className="text-gray-500 text-lg">B.tech CSE</p>
+          <p className="text-gray-500 text-lg">{user.course} ({user.department}) {user.year}</p>
           </div>
         </div>
 
@@ -73,7 +76,7 @@ export default function ProfilePage() {
         <div className="mt-6 space-y-2 text-gray-700">
           <p>
             <span className="font-semibold">Skills:</span>{" "}
-            {user.skills?.join(", ") || "Not added yet"}
+            {user.skillsTeach?.join(", ") || "Not added yet"}
           </p>
           <p>
             <span className="font-semibold">Profile Status:</span>{" "}
@@ -96,13 +99,16 @@ export default function ProfilePage() {
             Edit Profile
           </button>
 
-          {!user.isComplete && (
+          {!user.isProfileComplete && (
+            <Link to="/complete-profile" >
             <button
               onClick={() => navigate("/complete-profile")}
               className="w-full bg-green-500 text-white py-2 px-4 rounded-full cursor-pointer hover:bg-green-600 transition"
             >
               Complete Profile
+              
             </button>
+            </Link>
           )}
 
           <button

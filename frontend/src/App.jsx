@@ -9,6 +9,9 @@ import  Home  from "./pages/Home"
 import VerifyOtp from "./pages/VerifyOtp";
 import ProfilePage from "./pages/ProfilePage";
 import ExploreSkills from "./pages/ExploreSkills";
+import ProfileCompletion from "./pages/ProfileCompletion";
+import ForgotEmail from "./pages/ForgotEmail";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
 
@@ -21,6 +24,8 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/verify" element={<VerifyOtp/>}/>
+        <Route path="/forgot-password" element={<ForgotEmail/>}/>
+        <Route path="/reset-password" element={<ResetPassword/>}/>
         
         {/* private routes */}
 
@@ -58,6 +63,15 @@ function App() {
          </PrivateRoute>
         }
          />
+
+         <Route path="/complete-profile"
+        
+          element={
+            <PrivateRoute>
+              <ProfileCompletion/>
+            </PrivateRoute>
+          }
+        />
 
 
       
