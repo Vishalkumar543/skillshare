@@ -12,6 +12,7 @@ import ExploreSkills from "./pages/ExploreSkills";
 import ProfileCompletion from "./pages/ProfileCompletion";
 import ForgotEmail from "./pages/ForgotEmail";
 import ResetPassword from "./pages/ResetPassword";
+import ScheduleSession from "./pages/ScheduleSession";
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
         <Route path="/verify" element={<VerifyOtp/>}/>
         <Route path="/forgot-password" element={<ForgotEmail/>}/>
         <Route path="/reset-password" element={<ResetPassword/>}/>
-        
+        <Route path="/schedule-session/:teacherId" element={<ScheduleSession />} />
         {/* private routes */}
 
         <Route path="/"

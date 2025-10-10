@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import API from "../api/api"; 
 import Navbar from "../components/Navbar"
+import { useNavigate } from "react-router-dom";
 
 const ExploreSkills = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+
+
 
   // 🔹 Fetch all users initially
   useEffect(() => {
@@ -20,6 +23,12 @@ const ExploreSkills = () => {
     };
     fetchUsers();
   }, []);
+
+  const navigate = useNavigate()
+
+  const clickHandler = (teacherId)=>{
+    navigate(`/schedule-session/${teacherId}`);
+  }
 
   // 🔹 Handle Search
   const handleSearch = async (e) => {
@@ -77,7 +86,7 @@ const ExploreSkills = () => {
                 {user.skillsTeach && user.skillsTeach.length > 0 ? user.skillsTeach.join(", ") : "No skills added"}
               </p>
               <button
-                
+                onClick={()=>clickHandler(user._id)}
                 className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
               >
                 Schedule Session

@@ -27,7 +27,7 @@ import sessionRoutes from "./routes/sessions.routes.js"
 //use routes
 app.use("/api/v1/user",userRoutes)
 app.use("/api/v1/user",userextraRoutes)
-app.use("/api/v1/session",sessionRoutes)
+app.use("/api/v1/sessions",sessionRoutes)
 
 
 app.use(errorHandler)
